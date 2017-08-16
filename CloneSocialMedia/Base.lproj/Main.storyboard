@@ -22,7 +22,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Iv-B8-iG8">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Iv-B8-iG8" customClass="FancyView" customModule="CloneSocialMedia" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="panda" translatesAutoresizingMaskIntoConstraints="NO" id="mYy-Ue-5gr">
@@ -72,8 +72,8 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qGr-eP-lhK">
-                                <rect key="frame" x="112" y="230" width="150" height="150"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qGr-eP-lhK" customClass="RoundFacebookBtn" customModule="CloneSocialMedia" customModuleProvider="target">
+                                <rect key="frame" x="112" y="220" width="150" height="150"/>
                                 <color key="backgroundColor" red="0.23827126622200012" green="0.34497570991516113" blue="0.61017102003097534" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="GIH-hF-llQ"/>
@@ -82,22 +82,22 @@
                                 <state key="normal" image="f"/>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="vaD-E9-gPo">
-                                <rect key="frame" x="46" y="420" width="283" height="127"/>
+                                <rect key="frame" x="46" y="400" width="283" height="117"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zav-Rl-cpV">
-                                        <rect key="frame" x="0.0" y="0.0" width="283" height="30"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zav-Rl-cpV" customClass="FancyTextField" customModule="CloneSocialMedia" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="283" height="25"/>
                                         <color key="textColor" red="0.23827126622200012" green="0.34497570991516113" blue="0.61017102003097534" alpha="0.87" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LUc-9g-VKS">
-                                        <rect key="frame" x="0.0" y="45" width="283" height="30"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LUc-9g-VKS" customClass="FancyTextField" customModule="CloneSocialMedia" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="40" width="283" height="25"/>
                                         <color key="textColor" red="0.2382712662" green="0.34497570989999998" blue="0.61017102000000001" alpha="0.87" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nNC-ho-hDp">
-                                        <rect key="frame" x="0.0" y="90" width="283" height="37"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nNC-ho-hDp" customClass="FancySignInBtn" customModule="CloneSocialMedia" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="80" width="283" height="37"/>
                                         <color key="backgroundColor" red="1" green="0.090196078431372548" blue="0.26666666666666666" alpha="0.87" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                         <state key="normal" title="Sign In">
@@ -111,11 +111,11 @@
                         <constraints>
                             <constraint firstItem="5Iv-B8-iG8" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="0xW-eP-wd9"/>
                             <constraint firstItem="Utz-XU-N7x" firstAttribute="top" secondItem="5Iv-B8-iG8" secondAttribute="bottom" constant="20" id="7gJ-Lt-Cm9"/>
-                            <constraint firstItem="vaD-E9-gPo" firstAttribute="top" secondItem="qGr-eP-lhK" secondAttribute="bottom" constant="40" id="ElC-Vp-BOC"/>
+                            <constraint firstItem="vaD-E9-gPo" firstAttribute="top" secondItem="qGr-eP-lhK" secondAttribute="bottom" constant="30" id="ElC-Vp-BOC"/>
                             <constraint firstItem="vaD-E9-gPo" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JEC-1r-bn5"/>
                             <constraint firstItem="Utz-XU-N7x" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="L6j-eX-8dL"/>
                             <constraint firstItem="qGr-eP-lhK" firstAttribute="centerX" secondItem="Utz-XU-N7x" secondAttribute="centerX" id="MIk-5v-KQ5"/>
-                            <constraint firstItem="qGr-eP-lhK" firstAttribute="top" secondItem="Utz-XU-N7x" secondAttribute="bottom" constant="40" id="Pab-W6-IR1"/>
+                            <constraint firstItem="qGr-eP-lhK" firstAttribute="top" secondItem="Utz-XU-N7x" secondAttribute="bottom" constant="30" id="Pab-W6-IR1"/>
                             <constraint firstItem="DwB-eP-DAE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Q1V-g0-0hq"/>
                             <constraint firstAttribute="trailing" secondItem="5Iv-B8-iG8" secondAttribute="trailing" id="SEZ-cC-AJy"/>
                             <constraint firstAttribute="trailingMargin" secondItem="vaD-E9-gPo" secondAttribute="trailing" constant="30" id="bfm-5d-eDr"/>

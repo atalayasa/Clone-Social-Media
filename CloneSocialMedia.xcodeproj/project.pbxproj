@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		474577F81F446D600084A7A3 /* FancyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474577F71F446D600084A7A3 /* FancyView.swift */; };
+		474577FB1F446F4A0084A7A3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474577FA1F446F4A0084A7A3 /* Constants.swift */; };
+		474577FD1F4473A30084A7A3 /* RoundFacebookBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474577FC1F4473A30084A7A3 /* RoundFacebookBtn.swift */; };
+		474577FF1F44823B0084A7A3 /* FancyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474577FE1F44823B0084A7A3 /* FancyTextField.swift */; };
+		474578011F4485770084A7A3 /* FancySignInBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474578001F4485770084A7A3 /* FancySignInBtn.swift */; };
 		47FF3B2C1F42F8D800BA1F88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FF3B2B1F42F8D800BA1F88 /* AppDelegate.swift */; };
 		47FF3B2E1F42F8D800BA1F88 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FF3B2D1F42F8D800BA1F88 /* SignInVC.swift */; };
 		47FF3B311F42F8D800BA1F88 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47FF3B2F1F42F8D800BA1F88 /* Main.storyboard */; };
@@ -17,6 +22,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		474577F71F446D600084A7A3 /* FancyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyView.swift; sourceTree = "<group>"; };
+		474577FA1F446F4A0084A7A3 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		474577FC1F4473A30084A7A3 /* RoundFacebookBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundFacebookBtn.swift; sourceTree = "<group>"; };
+		474577FE1F44823B0084A7A3 /* FancyTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyTextField.swift; sourceTree = "<group>"; };
+		474578001F4485770084A7A3 /* FancySignInBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancySignInBtn.swift; sourceTree = "<group>"; };
 		47FF3B281F42F8D800BA1F88 /* CloneSocialMedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloneSocialMedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47FF3B2B1F42F8D800BA1F88 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		47FF3B2D1F42F8D800BA1F88 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
@@ -60,6 +70,10 @@
 		47058D271F42FD7100594D6F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				474577F71F446D600084A7A3 /* FancyView.swift */,
+				474577FC1F4473A30084A7A3 /* RoundFacebookBtn.swift */,
+				474577FE1F44823B0084A7A3 /* FancyTextField.swift */,
+				474578001F4485770084A7A3 /* FancySignInBtn.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -70,6 +84,14 @@
 				47FF3B2D1F42F8D800BA1F88 /* SignInVC.swift */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		474577F91F446F3A0084A7A3 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				474577FA1F446F4A0084A7A3 /* Constants.swift */,
+			);
+			name = Util;
 			sourceTree = "<group>";
 		};
 		47FF3B1F1F42F8D800BA1F88 = {
@@ -93,6 +115,7 @@
 		47FF3B2A1F42F8D800BA1F88 /* CloneSocialMedia */ = {
 			isa = PBXGroup;
 			children = (
+				474577F91F446F3A0084A7A3 /* Util */,
 				47058D261F42FD6A00594D6F /* Model */,
 				47058D281F42FD7500594D6F /* Controller */,
 				47058D271F42FD7100594D6F /* View */,
@@ -251,7 +274,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				47FF3B2E1F42F8D800BA1F88 /* SignInVC.swift in Sources */,
+				474577FD1F4473A30084A7A3 /* RoundFacebookBtn.swift in Sources */,
 				47FF3B2C1F42F8D800BA1F88 /* AppDelegate.swift in Sources */,
+				474577FF1F44823B0084A7A3 /* FancyTextField.swift in Sources */,
+				474578011F4485770084A7A3 /* FancySignInBtn.swift in Sources */,
+				474577F81F446D600084A7A3 /* FancyView.swift in Sources */,
+				474577FB1F446F4A0084A7A3 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
