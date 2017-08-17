@@ -17,7 +17,7 @@ class FancySignInBtn: UIButton {
         layer.shadowOpacity = 0.8
         layer.shadowRadius = 5.0
         layer.shadowOffset = CGSize(width: 5.0, height: 5.0)
-        layer.cornerRadius = 10.0
+        layer.cornerRadius = 8.0
         
     }
 }

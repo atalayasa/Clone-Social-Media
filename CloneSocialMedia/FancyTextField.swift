@@ -15,7 +15,7 @@ class FancyTextField: UITextField {
         
         layer.borderColor = UIColor(red: SHADOW_GRAY, green: SHADOW_GRAY, blue: SHADOW_GRAY, alpha: 0.2).cgColor
         layer.borderWidth = 1.0
-        layer.cornerRadius = 10.0
+        layer.cornerRadius = 12.0
     }
     
     override func textRect(forBounds bounds: CGRect) -> CGRect {    //TextField içindeki yazının x y ekseninde yukaru aşağı sağa sola olan konumunu değiştiriyor.
