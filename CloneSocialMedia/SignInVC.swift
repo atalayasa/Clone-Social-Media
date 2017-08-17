@@ -14,18 +14,31 @@ import Firebase
 class SignInVC: UIViewController {
     @IBOutlet weak var emailField: FancyTextField!
     @IBOutlet weak var passwordField: FancyTextField!
+  
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       
         
+//        self.emailField.delegate = self     //Bu iki satır bir yere dokunduğunda klavyenin kaybolması için
+//        self.passwordField.delegate = self
+//        
+        
+        //Tıklayınca klavyenin çıkması
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: .UIKeyboardDidShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: .UIKeyboardDidHide, object: nil)
+
+        showInitialViewWhenPressedOnScreen()
         
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    //yukarıda self.email field ile aynı işi yapıyor.
+    func showInitialViewWhenPressedOnScreen() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dissmissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
     }
+  
     
     @IBAction func facebookBtnPressed(_ sender: Any) {
         
@@ -61,7 +74,7 @@ class SignInVC: UIViewController {
         
         //Bu fonksiyon eğer account yoksa oluşturur varsa direk devam eder.
         
-        if (emailField.text?.characters.count != 0 || passwordField.text?.characters.count != 0) {
+        if (emailField.text?.characters.count != 0 && passwordField.text?.characters.count != 0) {
             print("Oldu")
             if let email = emailField.text, let password = passwordField.text {
                Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in  //Gidip firebase'den kontrol edecek //Firebase de email sign in auth method enable olması lazım.
@@ -78,17 +91,51 @@ class SignInVC: UIViewController {
                 }
                })
             }
-        } else {
+        } else {    //Kullanıcının boş password veya email girmesi durumunda
             let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sbPopUpID") as! PopUpVC
             self.addChildViewController(popOverVC)
             popOverVC.view.frame = self.view.frame
             self.view.addSubview(popOverVC.view)
             popOverVC.didMove(toParentViewController: self)
         }
-        
-        
-        
-        
+ 
     }
+    
+    //Buradan
+    func keyboardWillShow(notification: NSNotification) {
+        if let kbSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= kbSize.height
+            }
+            
+        }
+    }
+    
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if let kbSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0 {
+                self.view.frame.origin.y += kbSize.height
+            }
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+       textField.resignFirstResponder()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func dissmissKeyboard() {
+        view.endEditing(true)
+    }
+    //Buraya kadar olan kısım klavyenin gösterilip aşağı kaydırılmasıyla alakalı
+    
+
+    
+    
 }
 

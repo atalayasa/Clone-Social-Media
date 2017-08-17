@@ -97,7 +97,7 @@
                                         <rect key="frame" x="0.0" y="40" width="283" height="25"/>
                                         <color key="textColor" red="0.2382712662" green="0.34497570989999998" blue="0.61017102000000001" alpha="0.87" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardAppearance="alert" secureTextEntry="YES"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nNC-ho-hDp" customClass="FancySignInBtn" customModule="CloneSocialMedia" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="80" width="283" height="37"/>
@@ -114,6 +114,7 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="5Iv-B8-iG8" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="0xW-eP-wd9"/>
                             <constraint firstItem="Utz-XU-N7x" firstAttribute="top" secondItem="5Iv-B8-iG8" secondAttribute="bottom" constant="20" id="7gJ-Lt-Cm9"/>
@@ -127,7 +128,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="vaD-E9-gPo" secondAttribute="trailing" constant="30" id="bfm-5d-eDr"/>
                             <constraint firstItem="vaD-E9-gPo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="30" id="ejy-A5-ncA"/>
                             <constraint firstItem="Utz-XU-N7x" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="qu0-hF-FA5"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="DwB-eP-DAE" secondAttribute="bottom" id="xBz-Tm-Oo6"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="DwB-eP-DAE" secondAttribute="bottom" id="r34-nD-mtO"/>
                             <constraint firstAttribute="trailing" secondItem="DwB-eP-DAE" secondAttribute="trailing" id="yUe-TN-jL1"/>
                             <constraint firstItem="5Iv-B8-iG8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="zTF-8W-uwg"/>
                         </constraints>

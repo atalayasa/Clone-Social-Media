@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     FirebaseApp.configure()
         
-        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)//Objective  C olduğu için
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)//Objective  C olduğu için facebookta bulunan kod böyle yapıyoruz.
    
         return true
     }

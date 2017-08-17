@@ -18,12 +18,20 @@ class FancyTextField: UITextField {
         layer.cornerRadius = 12.0
     }
     
+   
+    
     override func textRect(forBounds bounds: CGRect) -> CGRect {    //TextField içindeki yazının x y ekseninde yukaru aşağı sağa sola olan konumunu değiştiriyor.
         return bounds.insetBy(dx: 10, dy: 5)
     }
 
     
-    override func editingRect(forBounds bounds: CGRect) -> CGRect {
+    override func editingRect(forBounds bounds: CGRect) -> CGRect {//TextField içindeki yazının x y ekseninde yukaru aşağı sağa sola olan konumunu değiştiriyor.
         return bounds.insetBy(dx: 10, dy: 5)
     }
+
+    
 }
+
+
+
+
