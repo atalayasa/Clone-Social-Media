@@ -19,7 +19,7 @@ class FancyTextField: UITextField {
     }
     
     override func textRect(forBounds bounds: CGRect) -> CGRect {    //TextField içindeki yazının x y ekseninde yukaru aşağı sağa sola olan konumunu değiştiriyor.
-        return bounds.insetBy(dx: 10, dy: 12.5)
+        return bounds.insetBy(dx: 10, dy: 5)
     }
 
     

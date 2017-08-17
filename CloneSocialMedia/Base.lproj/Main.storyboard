@@ -91,13 +91,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="283" height="25"/>
                                         <color key="textColor" red="0.23827126622200012" green="0.34497570991516113" blue="0.61017102003097534" alpha="0.87" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LUc-9g-VKS" customClass="FancyTextField" customModule="CloneSocialMedia" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="40" width="283" height="25"/>
                                         <color key="textColor" red="0.2382712662" green="0.34497570989999998" blue="0.61017102000000001" alpha="0.87" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardAppearance="alert" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nNC-ho-hDp" customClass="FancySignInBtn" customModule="CloneSocialMedia" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="80" width="283" height="37"/>
@@ -106,6 +106,9 @@
                                         <state key="normal" title="Sign In">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="0.87" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="signInBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vlc-2R-MUH"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -129,10 +132,75 @@
                             <constraint firstItem="5Iv-B8-iG8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="zTF-8W-uwg"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailField" destination="zav-Rl-cpV" id="PpC-2g-gq4"/>
+                        <outlet property="passwordField" destination="LUc-9g-VKS" id="db1-V7-8PK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
+        </scene>
+        <!--Pop UpVC-->
+        <scene sceneID="PPU-hL-Ax0">
+            <objects>
+                <viewController storyboardIdentifier="sbPopUpID" id="zix-aK-PSx" customClass="PopUpVC" customModule="CloneSocialMedia" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FeH-WI-8NU"/>
+                        <viewControllerLayoutGuide type="bottom" id="URg-HL-NfD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ahb-HL-cxU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CeA-P8-Fv1">
+                                <rect key="frame" x="49.5" y="232.5" width="276" height="202"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SLr-qq-9IS">
+                                        <rect key="frame" x="96" y="142" width="84" height="52"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="52" id="AhZ-zO-8Pj"/>
+                                            <constraint firstAttribute="width" constant="84" id="INu-L4-Y15"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="20"/>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="0.87" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Close"/>
+                                        <connections>
+                                            <action selector="closePopUp:" destination="zix-aK-PSx" eventType="touchUpInside" id="Z4X-KQ-fa4"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.97680455450000003" green="0.39951977" blue="0.52307907610000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="276" id="4mf-8r-2vI"/>
+                                    <constraint firstItem="SLr-qq-9IS" firstAttribute="bottom" secondItem="CeA-P8-Fv1" secondAttribute="bottomMargin" id="Mls-aI-VZD"/>
+                                    <constraint firstAttribute="height" constant="202" id="lAQ-bq-R4W"/>
+                                    <constraint firstItem="SLr-qq-9IS" firstAttribute="centerX" secondItem="CeA-P8-Fv1" secondAttribute="centerX" id="lkD-9n-Vft"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please specify your password &amp; email" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hg6-eP-piB">
+                                <rect key="frame" x="84" y="303.5" width="207" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="207" id="VbG-mz-Pgk"/>
+                                    <constraint firstAttribute="height" constant="60" id="ckV-c4-Rtv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="0.87" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hg6-eP-piB" firstAttribute="centerY" secondItem="Ahb-HL-cxU" secondAttribute="centerY" id="Phq-1h-8Bl"/>
+                            <constraint firstItem="CeA-P8-Fv1" firstAttribute="centerY" secondItem="Ahb-HL-cxU" secondAttribute="centerY" id="aMe-Sr-klY"/>
+                            <constraint firstItem="CeA-P8-Fv1" firstAttribute="centerX" secondItem="Ahb-HL-cxU" secondAttribute="centerX" id="i11-Kg-fha"/>
+                            <constraint firstItem="hg6-eP-piB" firstAttribute="centerX" secondItem="Ahb-HL-cxU" secondAttribute="centerX" id="tPS-Nv-IQE"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="myN-7q-tQ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="885.60000000000002" y="138.98050974512745"/>
         </scene>
     </scenes>
     <resources>

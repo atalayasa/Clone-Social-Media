@@ -12,10 +12,14 @@ import FBSDKLoginKit
 import Firebase
 
 class SignInVC: UIViewController {
+    @IBOutlet weak var emailField: FancyTextField!
+    @IBOutlet weak var passwordField: FancyTextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+       
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,6 +54,41 @@ class SignInVC: UIViewController {
                 
             }
         }
+    }
+    
+    
+    @IBAction func signInBtnPressed(_ sender: Any) {
+        
+        //Bu fonksiyon eğer account yoksa oluşturur varsa direk devam eder.
+        
+        if (emailField.text?.characters.count != 0 || passwordField.text?.characters.count != 0) {
+            print("Oldu")
+            if let email = emailField.text, let password = passwordField.text {
+               Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in  //Gidip firebase'den kontrol edecek //Firebase de email sign in auth method enable olması lazım.
+                if error == nil {
+                    print("JESS: Email User authenticate with Firebase")
+                } else {
+                    Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
+                        if error != nil {
+                            print("JESS: Unable to authenticate with Firebase using email")
+                        } else {
+                            print("JESS: Successfully authenticate with Firebase")
+                        }
+                    })
+                }
+               })
+            }
+        } else {
+            let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sbPopUpID") as! PopUpVC
+            self.addChildViewController(popOverVC)
+            popOverVC.view.frame = self.view.frame
+            self.view.addSubview(popOverVC.view)
+            popOverVC.didMove(toParentViewController: self)
+        }
+        
+        
+        
+        
     }
 }
 
