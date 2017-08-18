@@ -10,6 +10,7 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 import Firebase
+import SwiftKeychainWrapper //Password Hatırlaması için her seferinde girişte sormaması için
 
 class SignInVC: UIViewController {
     @IBOutlet weak var emailField: FancyTextField!
@@ -19,11 +20,7 @@ class SignInVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        self.emailField.delegate = self     //Bu iki satır bir yere dokunduğunda klavyenin kaybolması için
-//        self.passwordField.delegate = self
-//        
-        
+
         //Tıklayınca klavyenin çıkması
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: .UIKeyboardDidShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: .UIKeyboardDidHide, object: nil)
@@ -32,12 +29,7 @@ class SignInVC: UIViewController {
         
     }
 
-    //yukarıda self.email field ile aynı işi yapıyor.
-    func showInitialViewWhenPressedOnScreen() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dissmissKeyboard))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
+   
   
     
     @IBAction func facebookBtnPressed(_ sender: Any) {
@@ -134,7 +126,12 @@ class SignInVC: UIViewController {
     }
     //Buraya kadar olan kısım klavyenin gösterilip aşağı kaydırılmasıyla alakalı
     
-
+    //Ekranın bir yerine dokunduğunda klavyenin kaybolmasını sağlıyor
+    func showInitialViewWhenPressedOnScreen() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dissmissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
     
     
 }
