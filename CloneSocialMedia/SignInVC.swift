@@ -60,14 +60,15 @@ class SignInVC: UIViewController {
         
     }
 
-    func firebaseAuthenticate(_ credential:AuthCredential) {
+    func firebaseAuthenticate(_ credential:AuthCredential) {    //Bu ve üstteki facebook authentication için
         Auth.auth().signIn(with: credential) { (user, error) in //Firebase auth sağlıyor. Firebase ile alakalı  //Facebook hesabıyla giriş için
             if error != nil {
                 print("JESS! Unable to authenticate with Firebase - \(String(describing: error))")
             } else {
                 print("JESS! Successfully authenticated with Firebase")
                 if let user = user {
-                    self.completeSignIn(id: user.uid)
+                    let userData = ["provider":credential.provider]
+                    self.completeSignIn(id: user.uid,userData: userData)
                     //KeychainWrapper.standard.set(user.uid, forKey:KEY_UID) //user yukarıdaki completion handler da bulunan user
                 }
                 
@@ -88,7 +89,8 @@ class SignInVC: UIViewController {
                     print("JESS: Email User authenticate with Firebase")
                     
                     if let user = user {
-                      self.completeSignIn(id: user.uid)  //Tek tek auto sign in kodu yazmak yerine fonksiyonun çağırıp aynı işi yapıyoruz.
+                        let userData = ["provider":user.providerID]
+                      self.completeSignIn(id: user.uid, userData: userData)  //Tek tek auto sign in kodu yazmak yerine fonksiyonun çağırıp aynı işi yapıyoruz.
                     }
                 } else {
                     Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
@@ -97,7 +99,8 @@ class SignInVC: UIViewController {
                         } else {
                             print("JESS: Successfully authenticate with Firebase")
                             if let user = user {
-                                self.completeSignIn(id: user.uid)
+                                let userData = ["provider":user.providerID] //Email loginde providerı çekip oraya ekleme yapacağız facebook mu mail mi diye
+                                self.completeSignIn(id: user.uid,userData: userData)
                             }
                         }
                     })
@@ -113,7 +116,8 @@ class SignInVC: UIViewController {
         }
     }
     //Burada ise kullanıcının hesabının açık olup olmadığını kontrol edip auto sign ini sağlıyoruz.
-    func completeSignIn(id:String) {
+    func completeSignIn(id:String, userData: Dictionary<String,String>) {
+        DataService.ds.createFirebaseDBUser(uid: id, userData: userData)
        let keychainResult = KeychainWrapper.standard.set(id, forKey:KEY_UID)
         print("JESS: Data saved to keychain \(keychainResult)")
         performSegue(withIdentifier: "goToFeed", sender: nil)
