@@ -20,16 +20,25 @@ class SignInVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+//        viewDidLoad performsegue yapamaz. Çok erken yapması için
+//        if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
+//            print("JESS: ID found in keychain")
+//            performSegue(withIdentifier: "goToFeed", sender: nil)
+//        }
 
         //Tıklayınca klavyenin çıkması
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: .UIKeyboardDidShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: .UIKeyboardDidHide, object: nil)
 
         showInitialViewWhenPressedOnScreen()
-        
     }
-
-   
+    //Segue has to be apperared viewDidAppear***    //User sign in için yapıldı.
+    override func viewDidAppear(_ animated: Bool) {
+        if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
+            print("JESS: ID found in keychain")
+            performSegue(withIdentifier: "goToFeed", sender: nil)
+        }
+    }
   
     
     @IBAction func facebookBtnPressed(_ sender: Any) {
@@ -51,11 +60,15 @@ class SignInVC: UIViewController {
     }
 
     func firebaseAuthenticate(_ credential:AuthCredential) {
-        Auth.auth().signIn(with: credential) { (user, error) in //Firebase auth sağlıyor. Firebase ile alakalı
+        Auth.auth().signIn(with: credential) { (user, error) in //Firebase auth sağlıyor. Firebase ile alakalı  //Facebook hesabıyla giriş için
             if error != nil {
                 print("JESS! Unable to authenticate with Firebase - \(String(describing: error))")
             } else {
                 print("JESS! Successfully authenticated with Firebase")
+                if let user = user {
+                    self.completeSignIn(id: user.uid)
+                    //KeychainWrapper.standard.set(user.uid, forKey:KEY_UID) //user yukarıdaki completion handler da bulunan user
+                }
                 
             }
         }
@@ -72,12 +85,19 @@ class SignInVC: UIViewController {
                Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in  //Gidip firebase'den kontrol edecek //Firebase de email sign in auth method enable olması lazım.
                 if error == nil {
                     print("JESS: Email User authenticate with Firebase")
+                    
+                    if let user = user {
+                      self.completeSignIn(id: user.uid)  //Tek tek auto sign in kodu yazmak yerine fonksiyonun çağırıp aynı işi yapıyoruz.
+                    }
                 } else {
                     Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
                         if error != nil {
                             print("JESS: Unable to authenticate with Firebase using email")
                         } else {
                             print("JESS: Successfully authenticate with Firebase")
+                            if let user = user {
+                                self.completeSignIn(id: user.uid)
+                            }
                         }
                     })
                 }
@@ -90,7 +110,12 @@ class SignInVC: UIViewController {
             self.view.addSubview(popOverVC.view)
             popOverVC.didMove(toParentViewController: self)
         }
- 
+    }
+    //Burada ise kullanıcının hesabının açık olup olmadığını kontrol edip auto sign ini sağlıyoruz.
+    func completeSignIn(id:String) {
+       let keychainResult = KeychainWrapper.standard.set(id, forKey:KEY_UID)
+        print("JESS: Data saved to keychain \(keychainResult)")
+        performSegue(withIdentifier: "goToFeed", sender: nil)
     }
     
     //Buradan

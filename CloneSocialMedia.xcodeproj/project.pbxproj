@@ -12,6 +12,7 @@
 		474577FD1F4473A30084A7A3 /* RoundFacebookBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474577FC1F4473A30084A7A3 /* RoundFacebookBtn.swift */; };
 		474577FF1F44823B0084A7A3 /* FancyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474577FE1F44823B0084A7A3 /* FancyTextField.swift */; };
 		474578011F4485770084A7A3 /* FancySignInBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474578001F4485770084A7A3 /* FancySignInBtn.swift */; };
+		4771F60D1F4830BF0004FC4A /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4771F60C1F4830BF0004FC4A /* FeedVC.swift */; };
 		47BF2AFC1F45CE0800C25D8E /* PopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BF2AFB1F45CE0800C25D8E /* PopUpVC.swift */; };
 		47FF3B2C1F42F8D800BA1F88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FF3B2B1F42F8D800BA1F88 /* AppDelegate.swift */; };
 		47FF3B2E1F42F8D800BA1F88 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FF3B2D1F42F8D800BA1F88 /* SignInVC.swift */; };
@@ -29,6 +30,7 @@
 		474577FC1F4473A30084A7A3 /* RoundFacebookBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundFacebookBtn.swift; sourceTree = "<group>"; };
 		474577FE1F44823B0084A7A3 /* FancyTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyTextField.swift; sourceTree = "<group>"; };
 		474578001F4485770084A7A3 /* FancySignInBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancySignInBtn.swift; sourceTree = "<group>"; };
+		4771F60C1F4830BF0004FC4A /* FeedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
 		47BF2AFB1F45CE0800C25D8E /* PopUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpVC.swift; sourceTree = "<group>"; };
 		47FF3B281F42F8D800BA1F88 /* CloneSocialMedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloneSocialMedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47FF3B2B1F42F8D800BA1F88 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 			children = (
 				47FF3B2D1F42F8D800BA1F88 /* SignInVC.swift */,
 				47BF2AFB1F45CE0800C25D8E /* PopUpVC.swift */,
+				4771F60C1F4830BF0004FC4A /* FeedVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4771F60D1F4830BF0004FC4A /* FeedVC.swift in Sources */,
 				47FF3B2E1F42F8D800BA1F88 /* SignInVC.swift in Sources */,
 				474577FD1F4473A30084A7A3 /* RoundFacebookBtn.swift in Sources */,
 				47FF3B2C1F42F8D800BA1F88 /* AppDelegate.swift in Sources */,
