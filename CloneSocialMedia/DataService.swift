@@ -33,6 +33,7 @@ class DataService {
     
     func createFirebaseDBUser(uid : String, userData : Dictionary<String,String>) {
         REF_USERS.child(uid).updateChildValues(userData)    //usersın id kısmını pull ediyoruz. Herhangi bir şey döndürmesine gerek yok. Eğer bu değer yoksa dbye ekler.
+        //Update varolanın üstüne yazmak yerine onu günceller. set fonksiyonu eskiyi silip yenisini koyarken bu günceller.
     }
     
 }

@@ -9,7 +9,7 @@
 import UIKit
 import SwiftKeychainWrapper
 import Firebase
-//İkinci ekranın controlleri
+
 class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
@@ -19,7 +19,12 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        DataService.ds.REF_POSTS.observe(.value, with: { (snapshot) in  //DBdeki Posts objesinde olacak herhangi bir değişikliği izliyoruz.
+        print(snapshot.value)
+        })
     }
+    
     
     
     func numberOfSections(in tableView: UITableView) -> Int {

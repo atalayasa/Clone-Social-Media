@@ -67,7 +67,7 @@ class SignInVC: UIViewController {
             } else {
                 print("JESS! Successfully authenticated with Firebase")
                 if let user = user {
-                    let userData = ["provider":credential.provider]
+                    let userData = ["provider":credential.provider] //Firebase DBsine kayıt eklemek için
                     self.completeSignIn(id: user.uid,userData: userData)
                     //KeychainWrapper.standard.set(user.uid, forKey:KEY_UID) //user yukarıdaki completion handler da bulunan user
                 }
@@ -117,8 +117,8 @@ class SignInVC: UIViewController {
     }
     //Burada ise kullanıcının hesabının açık olup olmadığını kontrol edip auto sign ini sağlıyoruz.
     func completeSignIn(id:String, userData: Dictionary<String,String>) {
-        DataService.ds.createFirebaseDBUser(uid: id, userData: userData)
-       let keychainResult = KeychainWrapper.standard.set(id, forKey:KEY_UID)
+        DataService.ds.createFirebaseDBUser(uid: id, userData: userData)    //Firebase Dbye kullanıcı ekleme
+       let keychainResult = KeychainWrapper.standard.set(id, forKey:KEY_UID)    //Keychaine varolan id ve password kaydetme
         print("JESS: Data saved to keychain \(keychainResult)")
         performSegue(withIdentifier: "goToFeed", sender: nil)
     }
