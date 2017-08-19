@@ -33,6 +33,7 @@ class SignInVC: UIViewController {
         showInitialViewWhenPressedOnScreen()
     }
     //Segue has to be apperared viewDidAppear***    //User sign in için yapıldı.
+    /*What we are doing here is, checking if the user has already logged in before? And if so, we don't need to worry about the sign in VC so just continue straight to the feedVC. */
     override func viewDidAppear(_ animated: Bool) {
         if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
             print("JESS: ID found in keychain")

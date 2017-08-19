@@ -233,9 +233,6 @@
                             <constraint firstItem="E7D-5V-Yew" firstAttribute="centerY" secondItem="2iu-Vq-Kag" secondAttribute="centerY" id="zbm-0w-DFY"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="goToSignIn" id="awL-4S-joG"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pQA-Bt-aky" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

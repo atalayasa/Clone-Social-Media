@@ -18,10 +18,14 @@ class FeedVC: UIViewController {
 
     //Bu kısım sigouta tıkladığında Keychainden kaydedilmiş passwordü silip bi daha giriş yapman için.
     @IBAction func signOutBtnPressed(_ sender: Any) {
+        if self.presentingViewController != nil {   //Mark ilk kurslarda söylemişti bir çok yeni developer bunu yapar diye eğer dismiss kullanmazsak ilerde patlar  //performSegue(withIdentifier: "goToSignIn", sender: nil) ile kullanırsak ekranlar çok birikiyor
+            self.dismiss(animated: false, completion: nil)
+        }
+       
         let keychainResult = KeychainWrapper.standard.removeObject(forKey: KEY_UID)
         print("JESS: ID Removed from Keychain \(keychainResult)")
         try! Auth.auth().signOut()
-        performSegue(withIdentifier: "goToSignIn", sender: nil)
+        //performSegue(withIdentifier: "goToSignIn", sender: nil)
     }
 
 }
