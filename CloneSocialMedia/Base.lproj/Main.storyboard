@@ -410,8 +410,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="imageAdd" destination="Jqb-fp-maW" id="wgD-cZ-g0F"/>
-                        <outlet property="tableView" destination="ryx-JE-5nW" id="tXp-zr-QfI"/>
+                        <outlet property="imageAdd" destination="Jqb-fp-maW" id="f05-VT-jJF"/>
+                        <outlet property="tableView" destination="ryx-JE-5nW" id="h1d-t3-bLn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pQA-Bt-aky" userLabel="First Responder" sceneMemberID="firstResponder"/>

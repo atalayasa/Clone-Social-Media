@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class PostCell: UITableViewCell {
 //Custom class olarak tableViewCelle ekle ve identifieri PostCell olarak tanımla***
@@ -24,13 +25,36 @@ class PostCell: UITableViewCell {
         // Initialization code
     }
     
-    func configureCell(post: Post) {
+    func configureCell(post: Post, img: UIImage? = nil) {
         self.post = post
 
         self.caption.text = post.caption
         self.likesLbl.text = "\(post.likes)"
         
+        if img != nil { //Eğer cache 'de image varsa direk onu alıyoruz. Else storageımıza onu ekliyoruz.
+            self.postImg.image = img
+        } else {
+                let ref = Storage.storage().reference(forURL: post.imageUrl)
+
+                ref.getData(maxSize: 2*1024*1024, completion: { (data, error) in    //Yüklenebilecek datanın maksimum boyutu.
+                    if error != nil {
+                        print("JESS: Unable to download image from Firebase Storage")
+                    } else {
+                        print("JESS: Image downloaded from Firebase Storage")
+                        if let imgData = data {
+                            if let img = UIImage(data: imgData) {
+                                self.postImg.image = img
+                                FeedVC.imageCache.setObject(img, forKey:post.imageUrl as NSString)
+                            }
+                        }
+                    }
+                })
+            
+            
+            
+            }
+        }
+        
     }
 
 
-}
