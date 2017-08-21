@@ -10,17 +10,22 @@ import UIKit
 import SwiftKeychainWrapper
 import Firebase
 
-class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     var posts = [Post]()
-    
+    var imagePicker:UIImagePickerController!
+    @IBOutlet weak var imageAdd: CircleView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        imagePicker = UIImagePickerController()
+        imagePicker.allowsEditing = true
+        imagePicker.delegate = self
         
         DataService.ds.REF_POSTS.observe(.value, with: { (snapshot) in  //DBdeki Posts objesinde olacak herhangi bir değişikliği izliyoruz.
         self.posts = []
@@ -61,9 +66,6 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             return PostCell()
         }
     }
-    
-    
-    
 
     //Bu kısım sigouta tıkladığında Keychainden kaydedilmiş passwordü silip bi daha giriş yapman için.
     @IBAction func signOutBtnPressed(_ sender: Any) {
@@ -74,5 +76,26 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         print("JESS: ID Removed from Keychain \(keychainResult)")
         try! Auth.auth().signOut()
     }
+    
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let image = info[UIImagePickerControllerEditedImage] as? UIImage {   //Imageın gerçekten seçilip seçilmediğini kontrol ediyoruz. Info fonksiyonun infosu
+            imageAdd.image = image
+        } else {
+            print("JESS: A valid image was not selected")
+        }
+        imagePicker.dismiss(animated: true, completion: nil)    //Resim seçilince ekranın kapanması için
+    }
+    
+    @IBAction func addImageBtnPressed(_ sender: Any) {  //TapGesture ekledik buraya tap gesture eklediğinde main.storyboarddan user interaction enabled yapman gerekiyor.
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    
+    
+    
+    
+    
+    
 
 }
