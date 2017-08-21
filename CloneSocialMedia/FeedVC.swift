@@ -128,13 +128,32 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
                 } else {
                     print("JESS: Successfully uploaded image to Firebase Storage")
                     let downloadURL = metadata?.downloadURL()?.absoluteString   //İlerleyen videolarda kullanılacak resmin indirilme URL i olarak
+                    if let url = downloadURL {
+                        self.postToFirebase(imgUrl: url)   //Resmi firebase e gönderiyoruz.
+                    }
+                    
                 }
             })
         }
     }
     
     
-    
+    func postToFirebase(imgUrl: String) {
+        let post: Dictionary<String,AnyObject> = [
+        "caption": captionField.text as AnyObject,
+        "imageUrl": imgUrl as AnyObject,
+        "likes": 0 as AnyObject
+        ]
+        
+        let firebasePost = DataService.ds.REF_POSTS.childByAutoId() //Her bir post için unique ID üretir.
+        firebasePost.setValue(post) //UpdateChildValue de doğru bir kullanım olurdu. Fakat 0'dan ürettiğimiz için bu postu herşeyi en baştan yapmak daha mantıklı.
+       
+        captionField.text = ""
+        imageSelected = false
+        imageAdd.image = UIImage(named: "add-image")
+        
+        tableView.reloadData()
+    }
     
     
     
