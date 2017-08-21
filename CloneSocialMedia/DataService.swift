@@ -8,7 +8,7 @@
 
 import Foundation
 import Firebase
-
+import SwiftKeychainWrapper
 
 let DB_BASE = Database.database().reference()   //DBmizin rootunu içerir    //Google info plist içinde dbmizin url i olan https://clonesocialmedia.firebaseio.com/ zaten bulunuyor bu sayede erişebiliyoruz.
 
@@ -21,6 +21,7 @@ class DataService {
     private var _REF_BASE = DB_BASE //CloneSocialMedia DB'mizin en başındaki obje baseimiz
     private var _REF_POSTS = DB_BASE.child("posts") //CloneSocialMedia altındaki posts objesine erişir.
     private var _REF_USERS = DB_BASE.child("users") //CloneSocialMedia altındaki users objesine erişir.
+    
     
     //Storage Referansları
     private var _REF_POST_IMAGES = STORAGE_BASE.child("post-pics")  //Storageda bulunan klasörümüzün adı
@@ -35,6 +36,12 @@ class DataService {
     
     var REF_USERS : DatabaseReference {
         return _REF_USERS
+    }
+    
+    var REF_USER_CURRENT: DatabaseReference {   //Giriş yapmış kullanıcının referansını tutuyoruz burada. Ona göre verdiği likelar yüklediği postları atayacağız.
+        let uid = KeychainWrapper.standard.string(forKey: KEY_UID)
+        let user = REF_USERS.child(uid!)
+        return user
     }
     
     var REF_POST_IMAGES : StorageReference {
