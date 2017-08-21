@@ -15,8 +15,10 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var imageAdd: CircleView!
     
+    @IBOutlet weak var captionField: FancyTextField!
     var posts = [Post]()
     var imagePicker:UIImagePickerController!
+    var imageSelected = false
     
     static var imageCache: NSCache<NSString,UIImage> = NSCache()    //Postlara cache eklemek için
     
@@ -91,8 +93,10 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerEditedImage] as? UIImage {   //Imageın gerçekten seçilip seçilmediğini kontrol ediyoruz. Info fonksiyonun infosu
             imageAdd.image = image
+            imageSelected = true
         } else if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imageAdd.image = image
+            imageSelected = true
         } else {
             print("JESS: A valid image was not selected")
         }
@@ -103,6 +107,31 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         present(imagePicker, animated: true, completion: nil)
     }
     
+    @IBAction func postBtnPressed(_ sender: Any) {
+        guard let caption = captionField.text , caption != "" else {    //Guard if let yerine kullanılabilecek kodu güzelleştirmek adına koyulmuş bir yapı böyle bir yapı olup olmadığını kontrol ediyor.
+            print("JESS: Caption must be entered")
+            return
+        }
+        guard let img = imageAdd.image , imageSelected == true else {
+            print("JESS: An image must be selected")
+            return
+        }
+        //İlk olarak resmi compress ediyoruz. Ardından spesifik bir uid belirliyoruz. Metadatasında resim olduğunu ve tipini gönderiyoruz.
+        //Put fonksiyonu resmi verdiğimiz linkteki yere upload ediyor ve biz bir downloadURL e sahip oluyoruz. Uygulamaya tekrar girilince oradan çekmesi için
+        if let imgData = UIImageJPEGRepresentation(img, 0.2) {
+            let imgUid = NSUUID().uuidString    //Her bir resim için Unique bir uid yaratır.
+            let metadata = StorageMetadata()
+            metadata.contentType = "image/jpeg"
+            DataService.ds.REF_POST_IMAGES.child(imgUid).putData(imgData, metadata: metadata, completion: { (metadata, error) in
+                if error != nil {
+                    print("JESS: Unable to upload image to Firebase Storage")
+                } else {
+                    print("JESS: Successfully uploaded image to Firebase Storage")
+                    let downloadURL = metadata?.downloadURL()?.absoluteString   //İlerleyen videolarda kullanılacak resmin indirilme URL i olarak
+                }
+            })
+        }
+    }
     
     
     
